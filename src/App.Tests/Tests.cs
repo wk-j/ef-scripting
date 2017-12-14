@@ -24,14 +24,19 @@ namespace App.Tests
 
             context.Orders.Add(order);
             context.SaveChanges();
-
             Assert.Equal(3, order.Details.Count());
 
-            //context.OrderDetails.RemoveRange(order.Details);
             order.Details.Clear();
             context.SaveChanges();
-
             Assert.Equal(Enumerable.Empty<OrderDetail>(), order.Details);
+
+            order.Details.Add(new OrderDetail { Product = "A" });
+            order.Details.Add(new OrderDetail { Product = "B" });
+            order.Details.Add(new OrderDetail { Product = "C" });
+            order.Details.Add(new OrderDetail { Product = "D" });
+            order.Details.Add(new OrderDetail { Product = "E" });
+            context.SaveChanges();
+            Assert.Equal(5, order.Details.Count());
         }
     }
 }
