@@ -2,3 +2,6 @@
 paket-files
 packages
 .DS_Store
+bin
+obj
+*.db
