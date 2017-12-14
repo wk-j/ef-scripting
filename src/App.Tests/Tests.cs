@@ -26,7 +26,10 @@ namespace App.Tests
             context.SaveChanges();
             Assert.Equal(3, order.Details.Count());
 
-            order.Details.Clear();
+
+            //order.Details.Clear();
+            context.OrderDetails.RemoveRange(order.Details);
+
             context.SaveChanges();
             Assert.Equal(Enumerable.Empty<OrderDetail>(), order.Details);
 

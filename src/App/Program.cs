@@ -9,7 +9,7 @@ namespace App
     {
         [Key]
         public int Id { set; get; }
-        public List<OrderDetail> Details { set; get; } = new List<OrderDetail>();
+        public ICollection<OrderDetail> Details { set; get; } = new List<OrderDetail>();
     }
 
     public class OrderDetail
@@ -25,7 +25,7 @@ namespace App
         public DbSet<OrderDetail> OrderDetails { set; get; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Order.db");
+            optionsBuilder.UseSqlite("Data Source=database.sqlite");
         }
     }
 
